@@ -1,7 +1,3 @@
-# sample size , non missing values only
-# Annotator X: accuracy
-# 95% CI standard deviation (lower-bound - upper-bound)
-
 import jsonlines
 import scipy.stats
 import sys
@@ -20,7 +16,7 @@ else:
 pred_file = "data/jsonl/" + file + ".jsonl"
 true_file = "data/jsonl/" + file + "-gt.jsonl"
 
-# Loads annotations for the parametrized dataset
+# Loads annotations for the parameterized dataset
 # Reads JSONL and builds the prediction matrix (pred_matrix)
 # Each column is a prompt, each row is an annotator
 with jsonlines.open(pred_file) as reader:
@@ -30,7 +26,7 @@ with jsonlines.open(pred_file) as reader:
             pred_matrix[i].append(label["label"])
             i = i + 1
 
-# Loads ground-truth for the parametrized dataset
+# Loads ground-truth for the parameterized dataset
 # Reads JSONL and builds the modal ground-truth matrix (true_matrix)
 # Each column is a prompt, each row is an annotator
 with jsonlines.open(true_file) as reader:
@@ -55,7 +51,7 @@ confidence = 0.95
 z_value = scipy.stats.norm.ppf((1 + confidence) / 2.0)
 
 # One annotator at a time, calculates accuracy of the prediction against the modal ground truth,...
-# ...calculates the confidence interval assuming Gaussian distribution,
+# ...calculates the confidence interval assuming normal distribution,
 # ...and prints the output
 for annotator in range(6):
     accuracy = accuracy_score(cleaned_true[annotator], cleaned_pred[annotator])
@@ -64,5 +60,5 @@ for annotator in range(6):
     print("Annotator", annotator, ":", accuracy)
     print("Sample size:", size)
     print("95% CI:", interval)
-    print("Lower - Uppder:", accuracy-interval, "-", accuracy+interval)
+    print("Lower - Upper:", accuracy-interval, "-", accuracy+interval)
     print("----------------------------")

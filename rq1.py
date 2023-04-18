@@ -17,7 +17,7 @@ else:
 file = "data/jsonl/" + file + ".jsonl"
 
 # Loads annotations for the parameterized dataset
-# Reads JSONL and build the labels_matrix
+# Reads JSONL and builds the labels_matrix
 # Each column is an annotator, each row is a prompt
 with jsonlines.open(file) as reader:
     for obj in reader:
@@ -27,8 +27,10 @@ with jsonlines.open(file) as reader:
         labels_matrix.append(labels_prompt)
 
 # Calculates prompt means and stdevs, and annotator means
-# ddof=1 for stdevs indicate Sample Standard Deviation instead of Population
+# ddof=1 for stdevs indicates Sample Standard Deviation instead of Population
 # Calculated means and stdev ignore missing values (nanmean/nanstd)
+# OBS: nanmean for the vacationing-abroad-tf dataset will trigger a warning...
+# ...due to prompts without annotation (this is intentional and documentated in the article)
 prompt_means = np.nanmean(labels_matrix, axis=1)
 prompt_stdevs = np.nanstd(labels_matrix, axis=1, ddof=1)
 annotator_means = np.nanmean(labels_matrix, axis=0)
