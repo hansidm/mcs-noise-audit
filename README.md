@@ -7,7 +7,7 @@
 
 ## Instructions
 
-### 1. Data preparation
+### 1. Data preparation (Optional step)
 
 All required data is already present in the `/data` directory, therefore there is no need to prepare them and you can safely skip this step. However, if you want to re-generate the JSONL files from the raw data, follow these instructions.
 
