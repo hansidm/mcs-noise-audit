@@ -33,7 +33,7 @@ python rq1.py dataset-id
 
 ### 3. Computing accuracy with 95% confidence intervals
 
-The code in `rq2.py` will compute accuracy scores when considering, at a time, one annotator's labels as predictions against the modal ground-truth. In addition, it will compute the 95% confidence interval assuming normal distribution.
+The code in `rq2.py` will compute accuracy scores when considering, at a time, one annotator's labels as predictions against the modal ground-truth constructed with the remaining annotators' labels. In addition, it will compute the 95% confidence interval assuming normal distribution.
 
 ```
 python rq2.py dataset-id
