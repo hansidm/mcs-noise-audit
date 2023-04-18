@@ -30,7 +30,7 @@ with jsonlines.open(file) as reader:
 # ddof=1 for stdevs indicates Sample Standard Deviation instead of Population
 # Calculated means and stdev ignore missing values (nanmean/nanstd)
 # OBS: nanmean for the vacationing-abroad-tf dataset will trigger a warning...
-# ...due to prompts without annotation (this is intentional and documentated in the article)
+# ...due to prompts without annotation (this is intentional and documented in the article)
 prompt_means = np.nanmean(labels_matrix, axis=1)
 prompt_stdevs = np.nanstd(labels_matrix, axis=1, ddof=1)
 annotator_means = np.nanmean(labels_matrix, axis=0)
