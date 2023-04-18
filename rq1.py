@@ -16,7 +16,7 @@ else:
 
 file = "data/jsonl/" + file + ".jsonl"
 
-# Loads annotations for the parametrized dataset
+# Loads annotations for the parameterized dataset
 # Reads JSONL and build the labels_matrix
 # Each column is an annotator, each row is a prompt
 with jsonlines.open(file) as reader:
@@ -28,6 +28,7 @@ with jsonlines.open(file) as reader:
 
 # Calculates prompt means and stdevs, and annotator means
 # ddof=1 for stdevs indicate Sample Standard Deviation instead of Population
+# Calculated means and stdev ignore missing values (nanmean/nanstd)
 prompt_means = np.nanmean(labels_matrix, axis=1)
 prompt_stdevs = np.nanstd(labels_matrix, axis=1, ddof=1)
 annotator_means = np.nanmean(labels_matrix, axis=0)
