@@ -44,12 +44,13 @@ system_noise_orig = math.sqrt((level_noise ** 2) + (pattern_noise_orig ** 2))
 system_noise_mod = math.sqrt((level_noise ** 2) + (pattern_noise_mod ** 2))
 
 # Prepares output
-results = []
-results.append(["Level noise", level_noise])
-results.append(["Pattern noise (original)", pattern_noise_orig])
-results.append(["Pattern noise (modified)", pattern_noise_mod])
-results.append(["System noise (original)", system_noise_orig])
-results.append(["System noise (modified)", system_noise_mod])
+results = [
+    ["Level noise", level_noise],
+    ["Pattern noise (original)", pattern_noise_orig],
+    ["Pattern noise (modified)", pattern_noise_mod],
+    ["System noise (original)", system_noise_orig],
+    ["System noise (modified)", system_noise_mod]
+]
 
 # Prints output
 for result in results:
